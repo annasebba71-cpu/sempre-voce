@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sempre Você — Momentos que acolhem</title>
+<meta name="description" content="Sempre Você: experiências compartilhadas de calma e presença para pessoas com Alzheimer e seus acompanhantes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="app-header__eyebrow">Sempre Você</div>
+  <h1>Sempre Você</h1>
+  <p class="app-header__tagline">Momentos que acolhem.</p>
+  <p class="app-header__support">
+    Escolha um tema para viver um momento de calma juntos.
+  </p>
+  <p class="app-header__hint">Toque em uma imagem para começar.</p>
+</header>
+
+<main>
+  <section class="topics" id="topics-grid" aria-label="Temas disponíveis">
+    <!-- os 6 cards são inseridos aqui pelo script.js, cada um com sua marcação de imagem -->
+  </section>
+</main>
+
+<footer class="app-footer">
+  <p>Pensado para ser usado junto com um familiar, amigo ou cuidador.</p>
+  <button type="button" class="guidance-link" id="guidance-open">
+    Orientação para quem acompanha
+  </button>
+</footer>
+
+<!-- ---------- Painel de detalhe do capítulo ---------- -->
+<div class="detail-panel" id="detail-panel" role="dialog" aria-modal="true" aria-labelledby="detail-title" hidden>
+  <div class="detail-panel__content">
+
+    <!-- MARCAÇÃO DE IMAGEM: troque o arquivo em assets/images pelo nome mostrado aqui -->
+    <span class="detail-panel__image-wrap">
+      <span class="media-slot" id="detail-media-slot">
+        <img class="media-slot__img" id="detail-image" src="" alt="" hidden>
+        <span class="media-slot__placeholder" id="detail-placeholder" aria-hidden="true">
+          <svg class="media-slot__icon" viewBox="0 0 48 48" fill="none">
+            <rect x="6" y="9" width="36" height="30" rx="4" stroke="currentColor" stroke-width="2.3"/>
+            <circle cx="17" cy="19" r="3.4" stroke="currentColor" stroke-width="2.1"/>
+            <path d="M10 33l9.5-9.5 7.5 7.5 5.5-5.5 7.5 7.5" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round"/>
+          </svg>
+          <code id="detail-image-path"></code>
+        </span>
+      </span>
+    </span>
+
+    <h2 class="detail-panel__title" id="detail-title"></h2>
+    <p class="detail-panel__phrase" id="detail-phrase"></p>
+
+    <!-- MARCAÇÃO DE SOM: troque o arquivo em assets/audio pelo nome mostrado no rodapé do painel -->
+    <audio id="topic-audio" preload="none"></audio>
+
+    <div class="detail-panel__controls">
+      <button type="button" class="btn btn--primary" id="btn-play" aria-pressed="false">▶ Reproduzir</button>
+      <button type="button" class="btn btn--secondary" id="btn-back">Voltar</button>
+    </div>
+
+    <p class="detail-panel__status" id="detail-status" role="status" aria-live="polite"></p>
+    <p class="detail-panel__audio-path"><code id="detail-audio-path"></code></p>
+  </div>
+</div>
+
+<!-- ---------- Sequência Natureza → Nascer do Sol (5 cenas) ---------- -->
+<div class="detail-panel" id="scene-panel" role="dialog" aria-modal="true" aria-labelledby="scene-title" hidden>
+  <button type="button" class="scene-panel__close" id="scene-close" aria-label="Fechar e voltar para a capa">✕</button>
+  <div class="detail-panel__content">
+
+    <span class="detail-panel__image-wrap">
+      <span class="media-slot" id="scene-media-slot">
+        <img class="media-slot__img" id="scene-image" src="" alt="" hidden>
+        <span class="media-slot__placeholder" id="scene-placeholder" aria-hidden="true">
+          <svg class="media-slot__icon" viewBox="0 0 48 48" fill="none">
+            <rect x="6" y="9" width="36" height="30" rx="4" stroke="currentColor" stroke-width="2.3"/>
+            <circle cx="17" cy="19" r="3.4" stroke="currentColor" stroke-width="2.1"/>
+            <path d="M10 33l9.5-9.5 7.5 7.5 5.5-5.5 7.5 7.5" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round"/>
+          </svg>
+          <code id="scene-image-path"></code>
+        </span>
+      </span>
+    </span>
+
+    <h2 class="detail-panel__title" id="scene-title">Nascer do Sol</h2>
+    <p class="detail-panel__phrase" id="scene-phrase" aria-live="polite"></p>
+
+    <div class="scene-panel__progress" id="scene-progress" aria-hidden="true"></div>
+
+    <div class="detail-panel__controls">
+      <button type="button" class="btn btn--secondary" id="scene-prev">← Voltar</button>
+      <button type="button" class="btn btn--primary" id="scene-next">Continuar →</button>
+    </div>
+
+    <div class="detail-panel__controls">
+      <button type="button" class="btn btn--ghost" id="scene-play" aria-pressed="false">▶ Som ambiente</button>
+    </div>
+
+    <p class="detail-panel__status" id="scene-status" role="status" aria-live="polite"></p>
+    <p class="detail-panel__audio-path"><code id="scene-audio-path"></code></p>
+
+    <audio id="scene-audio" preload="none"></audio>
+  </div>
+</div>
+
+<!-- ---------- Painel de orientação ao acompanhante ---------- -->
+<div class="guidance-panel" id="guidance-panel" role="dialog" aria-modal="true" aria-labelledby="guidance-title" hidden>
+  <div class="guidance-panel__content">
+    <h2 id="guidance-title">Orientação para quem acompanha</h2>
+    <ul id="guidance-list"></ul>
+    <button type="button" class="btn btn--primary" id="guidance-close">Fechar</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

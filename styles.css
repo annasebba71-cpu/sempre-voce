@@ -1,0 +1,448 @@
+/* =======================================================
+   SEMPRE VOCÊ — styles.css
+   Paleta simplificada: uma única cor de destaque (sálvia)
+   guia todos os elementos interativos desta tela, para não
+   competir pela atenção de quem está olhando. Base em creme
+   quente (reduz reflexo). Terracota, dourado e azul ficam
+   reservados para uso pontual em cenas futuras, não nesta.
+   ======================================================= */
+
+:root{
+  --cream:       #F5EFDF;
+  --sand:        #E7DBC0;
+  --warm-white:  #FFFBF2;
+  --sage:        #5C8567;
+  --sage-deep:   #3E5F49;
+  --slate-blue:  #4F7191;
+  --gold:        #B98A3E;
+  --terracotta:  #C1633C; /* usar com moderação, acento de ação */
+  --ink:         #1E3134;
+  --ink-soft:    #45585B;
+
+  --radius-lg: 26px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+
+  --shadow-soft: 0 10px 30px rgba(34,56,59,0.08);
+  --shadow-card: 0 6px 18px rgba(34,56,59,0.07);
+
+  --space-1: .5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+
+  --focus-ring: 3px solid var(--ink);
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+
+html{
+  -webkit-text-size-adjust: 100%;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  min-height:100dvh;
+  background: linear-gradient(180deg, var(--warm-white) 0%, var(--cream) 100%);
+  color: var(--ink);
+  font-family: 'Comfortaa', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+img{ max-width:100%; display:block; }
+
+h1, h2, h3{
+  font-family: 'Comfortaa', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  margin: 0;
+  color: var(--ink);
+}
+
+button{
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ---------- Foco visível (acessibilidade) ---------- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible{
+  outline: var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---------- Cabeçalho ---------- */
+.app-header{
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 3.5rem) var(--space-3) var(--space-2);
+  text-align: center;
+}
+
+.app-header__eyebrow{
+  font-size: .8rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+  font-weight: 700;
+  margin-bottom: .6rem;
+}
+
+.app-header h1{
+  font-size: clamp(2.2rem, 7vw, 3.1rem);
+  letter-spacing: .01em;
+}
+
+.app-header__tagline{
+  font-family: 'Comfortaa', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  font-size: clamp(1.05rem, 3.4vw, 1.3rem);
+  color: var(--sage-deep);
+  margin-top: .5rem;
+}
+
+.app-header__support{
+  max-width: 46ch;
+  margin: var(--space-2) auto 0;
+  font-size: 1.02rem;
+  color: var(--ink-soft);
+}
+
+.app-header__hint{
+  margin-top: var(--space-2);
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ---------- Grade de tópicos ---------- */
+.topics{
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: var(--space-2) var(--space-3) var(--space-4);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+@media (min-width: 560px){
+  .topics{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 900px){
+  .topics{ grid-template-columns: repeat(3, 1fr); gap: var(--space-3) var(--space-3); }
+}
+
+.topic-card{
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background: var(--warm-white);
+  border: 1px solid rgba(34,56,59,0.08);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform .2s ease, box-shadow .3s ease, border-color .3s ease;
+  min-height: 48px; /* alvo mínimo de toque garantido pelo card inteiro, bem maior na prática */
+}
+
+@media (hover:hover){
+  .topic-card:hover{
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-soft);
+    border-color: rgba(34,56,59,0.16);
+  }
+}
+.topic-card:active{ transform: translateY(0); }
+
+.topic-card__image-wrap{
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.topic-card__body{
+  padding: var(--space-2) var(--space-2) var(--space-3);
+  text-align: left;
+}
+
+.topic-card__body h2{
+  font-size: 1.28rem;
+}
+
+.topic-card__body p{
+  margin: .4rem 0 0;
+  color: var(--ink-soft);
+  font-size: .98rem;
+}
+
+.topic-card__cta{
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  margin-top: var(--space-2);
+  font-size: .88rem;
+  font-weight: 700;
+  color: var(--sage-deep);
+}
+.topic-card__cta::after{
+  content: "→";
+  color: var(--sage-deep);
+  transition: transform .2s ease;
+}
+@media (hover:hover){
+  .topic-card:hover .topic-card__cta::after{ transform: translateX(3px); }
+}
+
+/* ---------- Rodapé ---------- */
+.app-footer{
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 var(--space-3) var(--space-4);
+  text-align: center;
+}
+.app-footer p{
+  color: var(--ink-soft);
+  font-size: .92rem;
+}
+
+.guidance-link{
+  all: unset;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: var(--space-1);
+  padding: .55rem 1rem;
+  min-height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(34,56,59,0.18);
+  color: var(--ink-soft);
+  font-size: .86rem;
+  font-weight: 700;
+}
+@media (hover:hover){
+  .guidance-link:hover{ border-color: var(--sage-deep); color: var(--sage-deep); }
+}
+
+/* ---------- Painel de detalhe (tela grande ao abrir um tópico) ---------- */
+.detail-panel{
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  background: linear-gradient(180deg, var(--warm-white) 0%, var(--cream) 100%);
+}
+.detail-panel[hidden]{ display: none; }
+
+.detail-panel__content{
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 5vw, 3rem) var(--space-3) var(--space-4);
+}
+
+.detail-panel__image-wrap{
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+/* ---------- Marcação de mídia: mostra onde a imagem real vai entrar ---------- */
+.media-slot{
+  position: relative;
+  display: block;
+  width: 100%; height: 100%;
+  background: var(--sand);
+  border: 1.5px dashed rgba(34,56,59,0.28);
+}
+.media-slot__img{
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.media-slot__placeholder{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  padding: var(--space-2);
+  text-align: center;
+  color: var(--ink-soft);
+}
+.media-slot__icon{
+  width: 15%;
+  min-width: 26px;
+  max-width: 42px;
+}
+.media-slot__placeholder code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .72rem;
+  background: rgba(34,56,59,0.06);
+  padding: .2rem .55rem;
+  border-radius: 6px;
+  word-break: break-all;
+}
+
+.detail-panel__title{
+  margin-top: var(--space-3);
+  font-size: clamp(1.6rem, 5.5vw, 2.1rem);
+  text-align: center;
+}
+
+.detail-panel__phrase{
+  margin: var(--space-2) auto 0;
+  max-width: 48ch;
+  text-align: center;
+  font-family: 'Comfortaa', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  font-size: clamp(1.08rem, 3.4vw, 1.28rem);
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+.detail-panel__controls{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .8rem;
+  margin-top: var(--space-3);
+}
+
+.btn{
+  all: unset;
+  box-sizing: border-box;
+  min-height: 48px;
+  min-width: 48px;
+  padding: .8rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: .98rem;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+.btn--primary{ background: var(--sage-deep); color: var(--warm-white); }
+.btn--secondary{ background: var(--warm-white); color: var(--ink); border: 1.5px solid rgba(34,56,59,0.2); }
+.btn--ghost{ background: transparent; color: var(--ink-soft); border: 1.5px solid rgba(34,56,59,0.14); }
+
+@media (hover:hover){
+  .btn--primary:hover{ background: var(--sage); }
+  .btn--secondary:hover{ border-color: var(--sage-deep); color: var(--sage-deep); }
+  .btn--ghost:hover{ border-color: var(--sage-deep); color: var(--sage-deep); }
+}
+
+.detail-panel__status{
+  text-align: center;
+  margin-top: var(--space-3);
+  font-size: .9rem;
+  color: var(--ink-soft);
+  min-height: 1.2em;
+}
+
+.detail-panel__audio-path{
+  text-align: center;
+  margin-top: .3rem;
+}
+.detail-panel__audio-path code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .72rem;
+  color: var(--ink-soft);
+  background: rgba(34,56,59,0.06);
+  padding: .2rem .55rem;
+  border-radius: 6px;
+}
+
+/* ---------- Painel de orientação (para o acompanhante) ---------- */
+.guidance-panel{
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3);
+  background: rgba(34,56,59,0.42);
+}
+.guidance-panel[hidden]{ display: none; }
+
+.guidance-panel__content{
+  background: var(--warm-white);
+  border-radius: var(--radius-lg);
+  max-width: 480px;
+  width: 100%;
+  padding: var(--space-3) var(--space-3) var(--space-2);
+  box-shadow: var(--shadow-soft);
+  max-height: 82vh;
+  overflow-y: auto;
+}
+.guidance-panel__content h2{ font-size: 1.4rem; }
+.guidance-panel__content ul{
+  margin: var(--space-2) 0 0;
+  padding-left: 1.1rem;
+  color: var(--ink-soft);
+}
+.guidance-panel__content li{ margin-bottom: .6rem; line-height: 1.5; }
+.guidance-panel__content .btn{ margin-top: var(--space-2); }
+
+/* ---------- Sequência Natureza → Nascer do Sol ---------- */
+.scene-panel__close{
+  all: unset;
+  position: fixed;
+  top: var(--space-3);
+  right: var(--space-3);
+  z-index: 51;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--warm-white);
+  border: 1.5px solid rgba(34,56,59,0.16);
+  color: var(--ink-soft);
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+@media (hover:hover){
+  .scene-panel__close:hover{ border-color: var(--sage-deep); color: var(--sage-deep); }
+}
+
+.scene-panel__progress{
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+  margin-top: var(--space-3);
+}
+.scene-dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(34,56,59,0.18);
+  transition: background .2s ease, transform .2s ease;
+}
+.scene-dot.is-active{
+  background: var(--sage-deep);
+  transform: scale(1.25);
+}
+
+/* ---------- Movimento reduzido ---------- */
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
