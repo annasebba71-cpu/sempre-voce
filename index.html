@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Sempre Você — Momentos que acolhem</title>
+<title>Sempre Você — 10 Minutos Juntos</title>
 <meta name="description" content="Sempre Você: experiências compartilhadas de calma e presença para pessoas com Alzheimer e seus acompanhantes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,28 +12,83 @@
 </head>
 <body>
 
-<header class="app-header">
-  <div class="app-header__eyebrow">Sempre Você</div>
-  <h1>Sempre Você</h1>
-  <p class="app-header__tagline">Momentos que acolhem.</p>
-  <p class="app-header__support">
-    Escolha um tema para viver um momento de calma juntos.
-  </p>
-  <p class="app-header__hint">Toque em uma imagem para começar.</p>
-</header>
+<!-- ============ TELA 1: CAPA ============ -->
+<section id="screen-cover" class="screen screen--cover">
+  <div class="cover-photo-wrap">
+    <span class="media-slot media-slot--cover" id="cover-media-slot">
+      <img class="media-slot__img" id="cover-image" src="" alt="" hidden>
+      <span class="media-slot__placeholder" aria-hidden="true">
+        <svg class="media-slot__icon" viewBox="0 0 48 48" fill="none">
+          <rect x="6" y="9" width="36" height="30" rx="4" stroke="currentColor" stroke-width="2.3"/>
+          <circle cx="17" cy="19" r="3.4" stroke="currentColor" stroke-width="2.1"/>
+          <path d="M10 33l9.5-9.5 7.5 7.5 5.5-5.5 7.5 7.5" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        <code>assets/images/cover.jpg</code>
+      </span>
+    </span>
+    <div class="cover-scrim" aria-hidden="true"></div>
+  </div>
 
-<main>
-  <section class="topics" id="topics-grid" aria-label="Temas disponíveis">
-    <!-- os 6 cards são inseridos aqui pelo script.js, cada um com sua marcação de imagem -->
-  </section>
-</main>
+  <div class="cover-content">
+    <div class="app-header__eyebrow">♡ Sempre Você</div>
+    <h1 class="app-header__big-title">10 Minutos<br>Juntos</h1>
+    <p class="app-header__tagline">Você ainda é você.</p>
+    <p class="app-header__support">
+      Às vezes, uma pequena conversa abre uma grande porta.
+    </p>
 
-<footer class="app-footer">
-  <p>Pensado para ser usado junto com um familiar, amigo ou cuidador.</p>
-  <button type="button" class="guidance-link" id="guidance-open">
-    Orientação para quem acompanha
-  </button>
-</footer>
+    <div class="trust-row">
+      <div class="trust-row__item">
+        <span class="trust-row__icon trust-row__icon--sage" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3c-3 3-3 7 0 10-3 0-6 2-6 5h12c0-3-3-5-6-5 3-3 3-7 0-10z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </span>
+        <span>Sem testar a memória.</span>
+      </div>
+      <div class="trust-row__item">
+        <span class="trust-row__icon trust-row__icon--terracotta" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.35-9.5-8.8C.7 7.4 2.7 4 6.2 4c2 0 3.4 1.1 4 2.4C10.8 5.1 12.2 4 14.2 4c3.5 0 5.5 3.4 3.7 7.2C19.7 15.65 12 20 12 20z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </span>
+        <span>Sem respostas certas.</span>
+      </div>
+      <div class="trust-row__item">
+        <span class="trust-row__icon trust-row__icon--slate" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <span>Sem pressa.</span>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn--primary cover-cta" id="cover-next">
+      ♡ Escolha um tema e comecem <span aria-hidden="true">→</span>
+    </button>
+
+    <p class="cover-footnote">Pequenos momentos. Grandes conexões. <span class="heart-accent">♡</span></p>
+  </div>
+</section>
+
+<!-- ============ TELA 2: ESCOLHA DE TEMA ============ -->
+<section id="screen-topics" class="screen" hidden>
+  <header class="app-header app-header--compact">
+    <div class="app-header__eyebrow">♡ Sempre Você</div>
+    <h1>Sobre o que vamos<br>conversar hoje?</h1>
+    <p class="app-header__support">
+      Escolha um tema e aproveitem este momento juntos.
+    </p>
+  </header>
+
+  <main>
+    <section class="topics" id="topics-grid" aria-label="Temas disponíveis">
+      <!-- os 6 cards são inseridos aqui pelo script.js, cada um com sua marcação de imagem -->
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p class="app-footer__closing">Não existe ordem certa. O que importa é estarem juntos. <span class="heart-accent">♡</span></p>
+    <button type="button" class="guidance-link" id="guidance-open">
+      Orientação para quem acompanha
+    </button>
+  </footer>
+</section>
 
 <!-- ---------- Painel de detalhe do capítulo ---------- -->
 <div class="detail-panel" id="detail-panel" role="dialog" aria-modal="true" aria-labelledby="detail-title" hidden>
@@ -89,8 +144,9 @@
       </span>
     </span>
 
-    <h2 class="detail-panel__title" id="scene-title">Nascer do Sol</h2>
+    <h2 class="detail-panel__title" id="scene-title"></h2>
     <p class="detail-panel__phrase" id="scene-phrase" aria-live="polite"></p>
+    <div class="scene-activity" id="scene-activity" hidden></div>
 
     <div class="scene-panel__progress" id="scene-progress" aria-hidden="true"></div>
 
